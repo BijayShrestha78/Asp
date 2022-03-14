@@ -7,30 +7,3 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1.Models
-{
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class employee
-    {
-        public int employeeID { get; set; }
-        public string lastname { get; set; }
-        public string firstname { get; set; }
-        public Nullable<System.DateTime> birthdate { get; set; }
-        public string address { get; set; }
-        public string city { get; set; }
-    }
-}
-namespace WebApplication1.Models
-{
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class student
-    {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string phone { get; set; }
-    }
-}

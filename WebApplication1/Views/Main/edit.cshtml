@@ -1,18 +1,14 @@
 ﻿
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<style>
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-</style>
-
-<form action="UpdateData">
-    <label class="col-md-2">name</label>
+<h2>edit</h2>
+@using (Html.BeginForm("updatedata", "Main"))
+{
+    <input  type="hidden" name="id" value="model.id" />
+    <label class="col-md-2">ID</label>
     <div class=" col-md-4">
 
     </div>
@@ -49,6 +45,5 @@
         <br /> <input type="submit" class="btn btn-info" value="add" />
 
     </div>
-</form>
-
+}
 

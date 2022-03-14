@@ -8,7 +8,7 @@
     <Key>
       <PropertyRef Name="employeeID" />
     </Key>
-    <Property Name="employeeID" Type="Int32" Nullable="false" />
+    <Property Name="employeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="lastname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="firstname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="birthdate" Type="DateTime" Precision="3" />

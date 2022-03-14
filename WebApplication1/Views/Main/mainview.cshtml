@@ -10,7 +10,7 @@
     </style>
 <h2>employee list</h2>
 <table class="table" border="1">
-    <tr>
+    <tr><th>SN</th>
         <th>employeeid</th>
         <th>last name</th>
         <th>first name</th>
@@ -28,6 +28,8 @@
             <td>@data.birthdate</td>
             <td>@data.address</td>
             <td>@data.city</td>
+            <td><a href="@Url.Action("edit", new { employeeID= data.employeeID })">edit</a>
+         
         </tr>
         
 

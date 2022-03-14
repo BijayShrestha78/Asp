@@ -16,14 +16,7 @@ namespace WebApplication1.Controllers
             List<student> data = db.students.ToList();
             return View(data);
         }
-        public ActionResult Create()
-        {
-
-            return View();
-
-
-
-        }
+       
        
     }
 

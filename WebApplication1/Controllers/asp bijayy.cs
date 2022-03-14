@@ -15,6 +15,7 @@ namespace WebApplication1.Controllers
         public ActionResult mainview()
         {
             List<employee> data = db.employees.ToList();
+            
             return View();
         }
 
