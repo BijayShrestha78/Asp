@@ -25,7 +25,9 @@ namespace WebApplication1.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<book> books { get; set; }
         public virtual DbSet<employee> employees { get; set; }
+        public virtual DbSet<table_3> table_3 { get; set; }
         public virtual DbSet<student> students { get; set; }
     }
 }

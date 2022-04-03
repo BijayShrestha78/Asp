@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="studentModelStoreContainer" CdmEntityContainer="mainEntities">
+    <EntitySetMapping Name="books">
+      <EntityTypeMapping TypeName="studentModel.book">
+        <MappingFragment StoreEntitySet="book">
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="employees">
       <EntityTypeMapping TypeName="studentModel.employee">
         <MappingFragment StoreEntitySet="employee">
@@ -10,6 +19,16 @@
           <ScalarProperty Name="firstname" ColumnName="firstname" />
           <ScalarProperty Name="lastname" ColumnName="lastname" />
           <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="table_3">
+      <EntityTypeMapping TypeName="studentModel.table_3">
+        <MappingFragment StoreEntitySet="table 3">
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

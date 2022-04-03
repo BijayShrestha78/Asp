@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "createbook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+
+<form action="savedata">
+    <label class="col-md-2">name</label>
+    <div class=" col-md-4">
+
+    </div>
+
+    <label>ID</label>
+    <div>
+        <input type="number" name="ID" class="form-control" />
+    </div>
+    <label> Name</label>
+    <div>
+        <input type="text" name="name" class="form-control" />
+    </div>
+    <label>author</label>
+    <div>
+        <input type="text" name="author" class="form-control" />
+    </div>
+    <div>
+        <br /> <input type="submit" class="btn btn-info" value="add" />
+
+    </div>
+</form>
+
+

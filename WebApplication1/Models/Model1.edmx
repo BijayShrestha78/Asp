@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="studentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="book">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="author" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="employee">
           <Key>
             <PropertyRef Name="employeeID" />
@@ -27,8 +35,19 @@ warning 6002: The table/view 'student.dbo.student' does not have a primary key d
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="phone" Type="nchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="table 3">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="adress" Type="varchar" MaxLength="50" />
+          <Property Name="author" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityContainer Name="studentModelStoreContainer">
+          <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="table 3" EntityType="Self.table 3" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="student" EntityType="Self.student" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [student].[id] AS [id], 
@@ -42,9 +61,19 @@ warning 6002: The table/view 'student.dbo.student' does not have a primary key d
     <edmx:ConceptualModels>
       <Schema Namespace="studentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="mainEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="books" EntityType="studentModel.book" />
           <EntitySet Name="employees" EntityType="studentModel.employee" />
+          <EntitySet Name="table_3" EntityType="studentModel.table_3" />
           <EntitySet Name="students" EntityType="studentModel.student" />
         </EntityContainer>
+        <EntityType Name="book">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="author" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="employee">
           <Key>
             <PropertyRef Name="employeeID" />
@@ -56,6 +85,15 @@ warning 6002: The table/view 'student.dbo.student' does not have a primary key d
           <Property Name="address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="city" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="table_3">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="adress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="author" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="student">
           <Key>
             <PropertyRef Name="id" />
@@ -65,12 +103,21 @@ warning 6002: The table/view 'student.dbo.student' does not have a primary key d
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="studentModelStoreContainer" CdmEntityContainer="mainEntities">
+          <EntitySetMapping Name="books">
+            <EntityTypeMapping TypeName="studentModel.book">
+              <MappingFragment StoreEntitySet="book">
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="employees">
             <EntityTypeMapping TypeName="studentModel.employee">
               <MappingFragment StoreEntitySet="employee">
@@ -80,6 +127,16 @@ warning 6002: The table/view 'student.dbo.student' does not have a primary key d
                 <ScalarProperty Name="firstname" ColumnName="firstname" />
                 <ScalarProperty Name="lastname" ColumnName="lastname" />
                 <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="table_3">
+            <EntityTypeMapping TypeName="studentModel.table_3">
+              <MappingFragment StoreEntitySet="table 3">
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

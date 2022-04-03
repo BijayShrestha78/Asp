@@ -1,0 +1,39 @@
+﻿@model List<WebApplication1.Models.table_3>
+@{
+    ViewBag.Title = "bookview";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int sn = 0;
+}
+<style>
+    table, td, th {
+        background-color: blue;
+    }
+</style>
+<h2>employee list</h2>
+<table class="table" border="1">
+    <tr>
+        <th>sn</th>
+        <th>id</th>
+        <th>name</th>
+        <th>author</th>
+    </tr>
+    @foreach (var data in Model)
+    {
+        <tr>
+            <td>@(++sn)</td>
+            <td>@data.id</td>
+            <td>@data.name</td>
+            <td>@data.author</td>
+            
+
+        </tr>
+
+
+
+    }
+</table>
+<a href="@Url.Action("createbook")">Add Record</a>
+
+
+
+
