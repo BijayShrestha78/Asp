@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "craete2view";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+
+<form action="UpdateData">
+    <label class="col-md-2">name</label>
+    <div class=" col-md-4">
+
+    </div>
+
+    <label>ID</label>
+    <div>
+        <input type="number" name="ID" class="form-control" />
+    </div>
+    <label>salary paid</label>
+    <div>
+        <input type="text" name="salary" class="form-control" />
+    </div>
+    <label>paid date</label>
+    <div>
+        <input type="date time" name="salary" class="form-control" />
+    </div>
+
+    <label>
+        city
+
+    </label>
+    <div>
+        <input type="text" name="city" class="form-control" />
+    </div>
+    <div>
+        <br /> <input type="submit" class="btn btn-info" value="add" />
+
+    </div>
+</form>

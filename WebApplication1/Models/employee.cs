@@ -14,11 +14,22 @@ namespace WebApplication1.Models
     
     public partial class employee
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public employee()
+        {
+            this.employee_salary_details = new HashSet<employee_salary_details>();
+        }
+    
         public int employeeID { get; set; }
         public string lastname { get; set; }
         public string firstname { get; set; }
         public Nullable<System.DateTime> birthdate { get; set; }
         public string address { get; set; }
         public string city { get; set; }
+    
+        public virtual employee employee1 { get; set; }
+        public virtual employee employee2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<employee_salary_details> employee_salary_details { get; set; }
     }
 }

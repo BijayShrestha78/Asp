@@ -22,6 +22,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="employee_salary">
+      <EntityTypeMapping TypeName="studentModel.employee_salary">
+        <MappingFragment StoreEntitySet="employee_salary">
+          <ScalarProperty Name="paid_date" ColumnName="paid_date" />
+          <ScalarProperty Name="salary_paid" ColumnName="salary_paid" />
+          <ScalarProperty Name="employee_id" ColumnName="employee-id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employee_salary_details">
+      <EntityTypeMapping TypeName="studentModel.employee_salary_details">
+        <MappingFragment StoreEntitySet="employee_salary_details">
+          <ScalarProperty Name="paid_date" ColumnName="paid_date" />
+          <ScalarProperty Name="salary_paid" ColumnName="salary_paid" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="table_3">
       <EntityTypeMapping TypeName="studentModel.table_3">
         <MappingFragment StoreEntitySet="table 3">

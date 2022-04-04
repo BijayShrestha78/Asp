@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "mainview1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int sn = 0;
+}
+
+<h2>mainview1</h2>
+
+
+    ViewBag.Title = "mainview";
+    
+}
+<style>
+    table, td, th {
+        background-color: blue;
+    }
+</style>
+<h2>employee list</h2>
+<table class="table" border="1">
+    <tr>
+        <th>SN</th>
+        <th>employeeid</th>
+        <th>salary paid</th>
+        <th>paid date</th>
+    </tr>
+    @foreach (var data in Model)
+    {
+        <tr>
+            <td>@(++sn)</td>
+            <td>@data.employeeID</td>
+            <td>@data.salary paid</td>
+            <td>paid date</td>
+            <td><a href="@Url.Action("edit", new { employeeID= data.employeeID })">edit</td>
+
+        </tr>
+
+
+
+        }
+    </table>
+    <a href="@Url.Action("Create")">Add Record</a>

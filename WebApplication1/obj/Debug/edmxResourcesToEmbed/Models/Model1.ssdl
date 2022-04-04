@@ -19,6 +19,24 @@
     <Property Name="address" Type="nvarchar" MaxLength="60" />
     <Property Name="city" Type="nvarchar" MaxLength="15" />
   </EntityType>
+  <EntityType Name="employee_salary">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="employee-id" Type="int" Nullable="false" />
+    <Property Name="salary_paid" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="paid_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employee_salary_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="employee_id" Type="int" Nullable="false" />
+    <Property Name="salary_paid" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="paid_date" Type="datetime" Nullable="false" />
+  </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'student.dbo.student' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="student">
@@ -39,9 +57,35 @@ warning 6002: The table/view 'student.dbo.student' does not have a primary key d
     <Property Name="adress" Type="varchar" MaxLength="50" />
     <Property Name="author" Type="varchar" MaxLength="50" />
   </EntityType>
+  <Association Name="FK_employee_employee">
+    <End Role="employee" Type="Self.employee" Multiplicity="1" />
+    <End Role="employee1" Type="Self.employee" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="employeeID" />
+      </Principal>
+      <Dependent Role="employee1">
+        <PropertyRef Name="employeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_employee_salary_details_employee">
+    <End Role="employee" Type="Self.employee" Multiplicity="1" />
+    <End Role="employee_salary_details" Type="Self.employee_salary_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="employeeID" />
+      </Principal>
+      <Dependent Role="employee_salary_details">
+        <PropertyRef Name="employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="studentModelStoreContainer">
     <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employee_salary" EntityType="Self.employee_salary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employee_salary_details" EntityType="Self.employee_salary_details" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="table 3" EntityType="Self.table 3" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="student" EntityType="Self.student" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -50,5 +94,13 @@ warning 6002: The table/view 'student.dbo.student' does not have a primary key d
     [student].[phone] AS [phone]
     FROM [dbo].[student] AS [student]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK_employee_employee" Association="Self.FK_employee_employee">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="employee1" EntitySet="employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_employee_salary_details_employee" Association="Self.FK_employee_salary_details_employee">
+      <End Role="employee" EntitySet="employee" />
+      <End Role="employee_salary_details" EntitySet="employee_salary_details" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -3,8 +3,18 @@
   <EntityContainer Name="mainEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="books" EntityType="studentModel.book" />
     <EntitySet Name="employees" EntityType="studentModel.employee" />
+    <EntitySet Name="employee_salary" EntityType="studentModel.employee_salary" />
+    <EntitySet Name="employee_salary_details" EntityType="studentModel.employee_salary_details" />
     <EntitySet Name="table_3" EntityType="studentModel.table_3" />
     <EntitySet Name="students" EntityType="studentModel.student" />
+    <AssociationSet Name="FK_employee_employee" Association="studentModel.FK_employee_employee">
+      <End Role="employee" EntitySet="employees" />
+      <End Role="employee1" EntitySet="employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_employee_salary_details_employee" Association="studentModel.FK_employee_salary_details_employee">
+      <End Role="employee" EntitySet="employees" />
+      <End Role="employee_salary_details" EntitySet="employee_salary_details" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="book">
     <Key>
@@ -24,6 +34,28 @@
     <Property Name="birthdate" Type="DateTime" Precision="3" />
     <Property Name="address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
     <Property Name="city" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="employee1" Relationship="studentModel.FK_employee_employee" FromRole="employee" ToRole="employee1" />
+    <NavigationProperty Name="employee2" Relationship="studentModel.FK_employee_employee" FromRole="employee1" ToRole="employee" />
+    <NavigationProperty Name="employee_salary_details" Relationship="studentModel.FK_employee_salary_details_employee" FromRole="employee" ToRole="employee_salary_details" />
+  </EntityType>
+  <EntityType Name="employee_salary">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="employee_id" Type="Int32" Nullable="false" />
+    <Property Name="salary_paid" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="paid_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="employee_salary_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="employee_id" Type="Int32" Nullable="false" />
+    <Property Name="salary_paid" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="paid_date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="employee" Relationship="studentModel.FK_employee_salary_details_employee" FromRole="employee_salary_details" ToRole="employee" />
   </EntityType>
   <EntityType Name="table_3">
     <Key>
@@ -43,4 +75,28 @@
     <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
   </EntityType>
+  <Association Name="FK_employee_employee">
+    <End Type="studentModel.employee" Role="employee" Multiplicity="1" />
+    <End Type="studentModel.employee" Role="employee1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="employeeID" />
+      </Principal>
+      <Dependent Role="employee1">
+        <PropertyRef Name="employeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_employee_salary_details_employee">
+    <End Type="studentModel.employee" Role="employee" Multiplicity="1" />
+    <End Type="studentModel.employee_salary_details" Role="employee_salary_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employee">
+        <PropertyRef Name="employeeID" />
+      </Principal>
+      <Dependent Role="employee_salary_details">
+        <PropertyRef Name="employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
