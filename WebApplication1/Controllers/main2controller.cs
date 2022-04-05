@@ -17,8 +17,11 @@ namespace WebApplication1.Controllers
             return View(data);
         }
 
-        public ActionResult Create()
+        public ActionResult Create2()
         {
+            var employeeslist = db.employees.ToList();
+            ViewBag.employeeslist = new SelectList(employeeslist, "id", "name");
+        
             return View();
         }
         public ActionResult edit(int id)
@@ -34,14 +37,15 @@ namespace WebApplication1.Controllers
             return RedirectToAction("mainview1");
         }
 
-        public ActionResult savedata(employee_salary_details id)
+        public ActionResult savedata3(employee_salary_details id)
         {
 
             db.employee_salary_details.Add(id);
             db.SaveChanges();
-            return RedirectToAction("mainview");
+            return RedirectToAction("mainview1");
         }
 
 
     }
 }
+

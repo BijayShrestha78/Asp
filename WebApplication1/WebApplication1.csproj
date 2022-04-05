@@ -151,11 +151,6 @@
     <Compile Include="Models\employee_salary_details.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\model 2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>model 2.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Model1.Context.cs">
       <DependentUpon>Model1.Context.tt</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -200,13 +195,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\model 2.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>model 2.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\model 2.edmx.diagram">
-      <DependentUpon>model 2.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -244,8 +232,8 @@
     <Content Include="Views\Main\edit.cshtml" />
     <Content Include="Views\book\createbook.cshtml" />
     <Content Include="Views\book\bookview.cshtml" />
-    <Content Include="Views\main2controller\mainview1.cshtml" />
-    <Content Include="Views\Main\craete2view.cshtml" />
+    <Content Include="Views\main2\mainview1.cshtml" />
+    <Content Include="Views\main2\craete2view.cshtml" />
     <Content Include="Views\Main\edit1.cshtml" />
   </ItemGroup>
   <ItemGroup>

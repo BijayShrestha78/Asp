@@ -1,4 +1,4 @@
-﻿
+﻿@model List<WebApplication1.Models.employee_salary_details>
 @{
     ViewBag.Title = "mainview1";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -28,10 +28,10 @@
     {
         <tr>
             <td>@(++sn)</td>
-            <td>@data.employeeID</td>
-            <td>@data.salary paid</td>
-            <td>paid date</td>
-            <td><a href="@Url.Action("edit", new { employeeID= data.employeeID })">edit</td>
+            <td>@data.employee_id</td>
+            <td>@data.salary_paid</td>
+            <td>@data.paid_date</td>
+            
 
         </tr>
 
@@ -39,4 +39,4 @@
 
         }
     </table>
-    <a href="@Url.Action("Create")">Add Record</a>
+    <a href="@Url.Action("create2view")">Add Record</a>

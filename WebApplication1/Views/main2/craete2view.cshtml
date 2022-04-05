@@ -3,7 +3,8 @@
     ViewBag.Title = "craete2view";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@using (Html.BeginForm("savedata3", null, FormMethod.Post))
+{
 <style>
     form {
         display: flex;
@@ -21,13 +22,16 @@
     <div>
         <input type="number" name="ID" class="form-control" />
     </div>
+    <label>employees name</label>
+    @Html.DropDownList("employeeslist", null, "select", htmlAttributes: new { @Name = "employees_id" })
+    @*<input type ="text class=form-control" name="salary_paid" />*@
     <label>salary paid</label>
     <div>
         <input type="text" name="salary" class="form-control" />
     </div>
     <label>paid date</label>
     <div>
-        <input type="date time" name="salary" class="form-control" />
+        <input type="date" name="salary" class="form-control" />
     </div>
 
     <label>
@@ -42,3 +46,4 @@
 
     </div>
 </form>
+}
