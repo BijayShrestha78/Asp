@@ -20,6 +20,7 @@
 <table class="table" border="1">
     <tr>
         <th>SN</th>
+        <th>name</th>
         <th>employeeid</th>
         <th>salary paid</th>
         <th>paid date</th>
@@ -28,6 +29,7 @@
     {
         <tr>
             <td>@(++sn)</td>
+            <td>@data.employee.firstname</td>
             <td>@data.employee_id</td>
             <td>@data.salary_paid</td>
             <td>@data.paid_date</td>
