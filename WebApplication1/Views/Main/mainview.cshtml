@@ -8,6 +8,11 @@
         background-color: blue;
     }
     </style>
+@using(Html.BeginForm("mainview",null,FormMethod.Get))
+            {
+                <br /><br /> <b> search option</b><br /><br />@Html.RadioButton("option","name")<text>Name</text>
+        @Html.RadioButton("option","id")<text>ID</text><br /><br />@Html.TextBox("search")<input type="submit" name="submit" value="search"/>
+           }
 <h2>employee list</h2>
 <table class="table" border="1">
     <tr><th>SN</th>
@@ -28,16 +33,15 @@
             <td>@data.birthdate</td>
             <td>@data.address</td>
             <td>@data.city</td>
-            <td><a href="@Url.Action("edit", new { employeeID= data.employeeID })">edit</a>
-         
+            <td><a href="@Url.Action("edit", new { employeeID= data.employeeID })">edit</a></td>
         </tr>
         
 
 
     }
 </table>
-<a href="@Url.Action("Create")">Add Record</a>
-<a href="@Url.Action("edit")">edit record</a>
+
+
 
 
 

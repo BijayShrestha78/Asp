@@ -7,15 +7,27 @@
 
 <h2>mainview1</h2>
 
-
-    ViewBag.Title = "mainview";
-    
-}
 <style>
     table, td, th {
         background-color: blue;
     }
 </style>
+
+@using (Html.BeginForm("mainview1", "main2", FormMethod.Get))
+    {
+                <b>search option</b>
+    <input type="date" name="searchfrom" />
+
+    <input type="date" name="searchto" />
+    <input type="submit" name="submit" value="search" />
+    }
+
+
+
+
+
+
+}
 <h2>employee list</h2>
 <table class="table" border="1">
     <tr>
@@ -36,12 +48,6 @@
             
 
         </tr>
-        <tr>
-            <td>total</td>
-            <td colspan="2">@model.sum(X=>X.salary_paid)</td>
-                </tr>
-        </tr>
-
 
 
         }
